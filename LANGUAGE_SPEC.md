@@ -6,151 +6,104 @@ AsifLang
 
 ## Purpose
 
-AsifLang is a small custom language created to demonstrate how an interpreter works. It is designed for students who are learning Compiler Construction.
+AsifLang is a small custom language for learning how interpreters work. It is designed for a Compiler Construction mini semester project.
 
 ## Basic Rules
 
-- Each statement is written on a separate line.
-- Variable names store integer values.
+- Each statement is written normally as assignment or `show`.
+- Variables store integer values.
 - Expressions can use integer numbers, variables, arithmetic operators, and parentheses.
-- The `show` statement displays the result of an expression.
-- The language gives simple error messages for invalid code.
+- The `show` statement displays the value of an expression.
+- Common mistakes are shown as simple error messages.
 
 ## Variables
 
-Variables are used to store values.
-
-Example:
-
-```text
-x = 10
-marks = 85
-```
-
-Simple variable rules:
-
-- A variable name should start with a letter.
-- A variable name can contain letters, digits, and underscores.
-- Variable names are case-sensitive.
-- A variable must be assigned before it is used.
-
-Valid variable names:
-
-```text
-x
-total
-student_marks
-value1
-```
-
-Invalid variable names:
-
-```text
-1value
-total-marks
-show
-```
-
-## Integer Numbers
-
-AsifLang supports integer numbers only.
+Variables store integer values.
 
 Examples:
 
 ```text
+x = 10
+total = 25
+result = x + total
+```
+
+Rules:
+
+- A variable name starts with a letter or underscore.
+- A variable name can contain letters, digits, and underscores.
+- A variable must be assigned before it is used.
+- The keyword `show` is not used as a variable name.
+
+## Integer Numbers
+
+Only integers are supported.
+
+Valid:
+
+```text
 10
 25
-0
 100
 ```
 
-Decimal numbers such as `3.5` are not supported.
+Not supported:
 
-All values in AsifLang are integers.
+```text
+3.5
+```
 
 ## Assignment
 
-Assignment stores the value of an expression in a variable.
-
-Syntax:
-
-```text
-variable = expression
-```
-
-Example:
-
-```text
-total = 10 + 20
-```
-
-Required example:
+Assignment stores the result of an expression in a variable.
 
 ```text
 x = 10
+y = x + 5
 ```
 
-## Arithmetic Operators
+## Arithmetic
 
-AsifLang supports:
+Supported operators:
 
 - `+` addition
 - `-` subtraction
 - `*` multiplication
-- `/` division
+- `/` integer division
+
+Multiplication and division happen before addition and subtraction.
 
 Example:
-
-```text
-result = 10 + 5 * 2
-```
-
-Multiplication and division have higher priority than addition and subtraction.
-
-Division is used with integer values. For this mini project, test programs should use simple divisions that divide evenly, such as `20 / 4`.
-
-Valid arithmetic example:
 
 ```text
 x = 2 + 3 * 4
 show x
 ```
 
-## Parentheses
-
-Parentheses can be used to control the order of calculation.
-
-Example:
+Expected output:
 
 ```text
-result = (10 + 5) * 2
+14
 ```
 
-Valid parentheses example:
+## Parentheses
+
+Parentheses change the order of calculation.
 
 ```text
 x = (2 + 3) * 4
 show x
 ```
 
+Expected output:
+
+```text
+20
+```
+
 ## Show Statement
 
-The `show` statement displays the value of an expression.
-
-Syntax:
-
-```text
-show expression
-```
-
-Example:
-
-```text
-show total
-show 10 + 5
-```
-
-Valid program example:
+The `show` statement prints an expression value.
 
 ```text
 x = 10
@@ -158,15 +111,22 @@ y = x + 5
 show y
 ```
 
-## Simple Error Messages
+Expected output:
 
-AsifLang should show beginner-friendly errors such as:
+```text
+15
+```
 
-- `Error: Unknown character`
-- `Error: Invalid syntax`
-- `Error: Variable not defined`
-- `Error: Division by zero`
-- `Error: Missing closing parenthesis`
+## Simple Errors
+
+AsifLang handles common errors such as:
+
+- Unknown character
+- Invalid syntax
+- Missing closing parenthesis
+- Variable not defined
+- Division by zero
+- File not found
 
 Invalid examples:
 
@@ -176,9 +136,9 @@ x = 10 +
 show (5 + 2
 ```
 
-## Not Supported
+## Unsupported Features
 
-AsifLang will not support:
+AsifLang does not support:
 
 - Loops
 - If-else
@@ -189,3 +149,4 @@ AsifLang will not support:
 - Input
 - Comments
 - Advanced data types
+- GUI, web app, or database

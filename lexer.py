@@ -64,7 +64,7 @@ class Lexer:
                 self.advance()
             else:
                 raise Exception(
-                    f"Lexer Error: Unknown character '{self.current_char}' at position {self.position}"
+                    f"Unknown character '{self.current_char}' at position {self.position}"
                 )
 
         tokens.append(Token(EOF, position=self.position))
@@ -97,4 +97,3 @@ class Lexer:
             return Token(SHOW, identifier_text, start_position)
 
         return Token(IDENTIFIER, identifier_text, start_position)
-

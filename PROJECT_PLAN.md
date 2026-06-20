@@ -4,94 +4,57 @@
 
 AsifLang: A Mini Interpreter for a Custom Language
 
-## Project Goal
+## Goal
 
-The goal is to build a small interpreter for a custom language that demonstrates basic compiler construction concepts in a clear and simple way.
+Build a small interpreter that demonstrates compiler construction concepts while staying simple enough for students to explain in viva or exam.
 
-## Main Objectives
+## Final Features
 
-- Design a small custom language
-- Define simple syntax rules
-- Create a tokenizer for source code
-- Create a parser for statements and expressions
-- Execute assignments and arithmetic expressions
-- Display output using the `show` statement
-- Show simple error messages for invalid programs
+AsifLang includes only:
 
-## Planned Features
+- Integer numbers
+- Variables
+- Assignment
+- Arithmetic operators
+- Parentheses
+- `show` statement
+- Simple error messages
 
-AsifLang will include:
+## Not Included
 
-- Variable names such as `x`, `total`, and `marks`
-- Number values such as `10`, `25`, and `3.5`
-- Assignment using `=`
-- Arithmetic using `+`, `-`, `*`, and `/`
-- Parentheses for grouping expressions
-- Output using `show`
+AsifLang does not include loops, if-else, functions, strings, arrays, classes, input, comments, advanced data types, GUI, web app, or database.
 
-## Features Not Included
+## Completed Parts
 
-AsifLang will not include:
+### 1. Documentation
 
-- Conditions such as `if` and `else`
-- Loops such as `for` and `while`
-- Functions
-- Classes or objects
-- Strings
-- Arrays or lists
-- Boolean values
-- User input
-- File handling
-- Advanced error recovery
+The project has documentation for language rules, grammar, testing, team explanation, and exam preparation.
 
-## Development Phases
+### 2. Lexer
 
-### Phase 1: Documentation
+The lexer reads source code and converts it into tokens such as `IDENTIFIER`, `NUMBER`, `ASSIGN`, and `SHOW`.
 
-- Write project overview
-- Define language rules
-- Write grammar
-- Prepare exam explanation
+### 3. Parser
 
-### Phase 2: Tokenizer
+The parser checks token order using grammar rules and builds an AST. It handles assignment statements, `show` statements, arithmetic expressions, and parentheses.
 
-- Read source code
-- Convert source code into tokens
-- Identify numbers, variables, operators, and keywords
+### 4. AST
 
-### Phase 3: Parser
+The AST represents the program in a simple structured form using nodes such as `Program`, `Assignment`, `Show`, `Number`, `Variable`, and `BinaryOperation`.
 
-- Check the order of tokens
-- Parse assignment statements
-- Parse `show` statements
-- Parse arithmetic expressions
+### 5. Interpreter
 
-### Phase 4: Interpreter
+The interpreter executes the AST. It stores variables in a symbol table, evaluates expressions, and prints output for `show`.
 
-- Store variable values
-- Evaluate expressions
-- Execute assignments
-- Print values using `show`
+### 6. Testing
 
-### Phase 5: Testing
+The examples in the `examples/` folder test valid programs and simple errors.
 
-- Test valid programs
-- Test invalid programs
-- Check error messages
-- Prepare demo examples for exam
-
-## Expected Final Output
-
-At the end of the project, AsifLang should run small programs like:
+## Expected Demo Commands
 
 ```text
-a = 5
-b = 10
-show a + b
-```
-
-Expected output:
-
-```text
-15
+python main.py examples/basic.asif
+python main.py examples/arithmetic.asif
+python main.py examples/errors.asif
+python -m py_compile main.py tokens.py lexer.py parser.py ast_nodes.py interpreter.py
 ```

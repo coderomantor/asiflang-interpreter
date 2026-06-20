@@ -1,62 +1,43 @@
 # Grammar
 
-This file defines the simple grammar of AsifLang.
-
-## Informal Grammar
-
-An AsifLang program is made of multiple statements.
-
-A statement can be:
-
-- An assignment statement
-- A `show` statement
-
-Expressions can contain:
-
-- Integer numbers
-- Variables
-- Arithmetic operators
-- Parentheses
-
-## Grammar Rules
+This is the final grammar of AsifLang.
 
 ```text
-program        -> statement*
+program -> statement*
 
-statement      -> IDENTIFIER "=" expression
-                | "show" expression
+statement -> IDENTIFIER "=" expression
+           | "show" expression
 
-expression     -> term (("+" | "-") term)*
+expression -> term (("+" | "-") term)*
 
-term           -> factor (("*" | "/") factor)*
+term -> factor (("*" | "/") factor)*
 
-factor         -> NUMBER
-                | IDENTIFIER
-                | "(" expression ")"
+factor -> NUMBER
+        | IDENTIFIER
+        | "(" expression ")"
 ```
 
 ## Token Types
 
-The tokenizer will identify these token types:
+The lexer creates these token types:
 
 ```text
 NUMBER       integer number
 IDENTIFIER   variable name
 SHOW         show keyword
+ASSIGN       =
 PLUS         +
 MINUS        -
-STAR         *
-SLASH        /
-EQUAL        =
+MULTIPLY     *
+DIVIDE       /
 LPAREN       (
 RPAREN       )
-NEWLINE      end of statement
 EOF          end of file
 ```
 
 ## Operator Precedence
 
-Operator priority from highest to lowest:
+Operator priority:
 
 1. Parentheses: `( )`
 2. Multiplication and division: `*`, `/`
@@ -65,24 +46,30 @@ Operator priority from highest to lowest:
 Example:
 
 ```text
-result = 10 + 5 * 2
+x = 2 + 3 * 4
+show x
 ```
 
-This is interpreted as:
+Output:
 
 ```text
-result = 10 + (5 * 2)
+14
 ```
 
-So the result is:
+With parentheses:
+
+```text
+x = (2 + 3) * 4
+show x
+```
+
+Output:
 
 ```text
 20
 ```
 
-## Statement Examples
-
-Valid program:
+## Valid Program
 
 ```text
 x = 10
@@ -90,21 +77,7 @@ y = x + 5
 show y
 ```
 
-Valid arithmetic:
-
-```text
-x = 2 + 3 * 4
-show x
-```
-
-Valid parentheses:
-
-```text
-x = (2 + 3) * 4
-show x
-```
-
-Invalid examples:
+## Invalid Examples
 
 ```text
 show unknown

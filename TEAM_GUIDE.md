@@ -1,32 +1,18 @@
 # Team Guide
 
-This guide helps team members understand the AsifLang project.
+This guide helps team members understand and explain AsifLang.
 
 ## Project Summary
 
-AsifLang is a mini interpreter for a small custom language. It is made for learning Compiler Construction concepts.
+AsifLang is a small interpreter for a custom language. It is designed for a Compiler Construction mini semester project.
 
-The language is intentionally simple. It only supports variables, numbers, assignment, arithmetic expressions, parentheses, and the `show` statement.
+The language supports only integer numbers, variables, assignment, arithmetic operators, parentheses, and `show`.
 
-## What Every Team Member Should Understand
+## Project Parts
 
-Every team member should be able to explain:
+### 1. Language Rules
 
-- What AsifLang is
-- Why it is related to Compiler Construction
-- What features the language supports
-- What features the language does not support
-- How a source program is converted into tokens
-- How grammar is used to check syntax
-- How expressions are evaluated
-- How variables are stored
-- How simple errors are displayed
-
-## Main Parts of the Project
-
-### 1. Language Design
-
-This part defines the rules of AsifLang.
+The language rules define what AsifLang supports.
 
 Example:
 
@@ -35,9 +21,15 @@ x = 10
 show x
 ```
 
-### 2. Tokenizer
+### 2. Lexer
 
-The tokenizer reads source code and breaks it into tokens.
+File:
+
+```text
+lexer.py
+```
+
+The lexer converts source code into tokens.
 
 Example:
 
@@ -48,83 +40,89 @@ x = 10
 Tokens:
 
 ```text
-IDENTIFIER, EQUAL, NUMBER
+IDENTIFIER(x), ASSIGN(=), NUMBER(10)
 ```
 
 ### 3. Parser
 
-The parser checks if tokens follow the grammar.
-
-Example grammar idea:
+File:
 
 ```text
-assignment -> IDENTIFIER "=" expression
+parser.py
 ```
 
-### 4. Interpreter
+The parser checks grammar rules and builds the AST. It also handles operator precedence, so `*` and `/` happen before `+` and `-`.
 
-The interpreter runs the program.
+### 4. AST
 
-Example:
+File:
 
 ```text
-x = 10
-show x
+ast_nodes.py
 ```
 
-It stores `10` in `x` and displays `10`.
+The AST represents the program using simple node classes:
 
-### 5. Error Handling
+- `Program`
+- `Assignment`
+- `Show`
+- `Number`
+- `Variable`
+- `BinaryOperation`
 
-The interpreter should show simple errors for mistakes.
+### 5. Interpreter
 
-Example:
+File:
 
 ```text
-show x
+interpreter.py
 ```
 
-If `x` was not assigned before, the output should be:
+The interpreter executes the AST. It stores variable values, evaluates expressions, and prints output for `show`.
+
+### 6. Symbol Table
+
+The symbol table is a Python dictionary.
+
+Example after `x = 10`:
 
 ```text
-Error: Variable not defined
+{"x": 10}
 ```
 
-## Suggested Team Roles
+### 7. Main Program
 
-- Documentation member: explains project idea, language rules, and exam notes
-- Tokenizer member: explains how source code becomes tokens
-- Parser member: explains grammar and syntax checking
-- Interpreter member: explains execution and variable storage
-- Testing member: explains valid and invalid test cases
-
-## How to Prepare for Exam
-
-- Read `README.md` first
-- Read `LANGUAGE_SPEC.md` to understand language rules
-- Read `GRAMMAR.md` to understand syntax
-- Read `EXAM_EXPLANATION.md` for viva answers
-- Practice explaining the sample programs
-- Practice drawing the flow: source code to tokens to parser to interpreter to output
-
-## Simple Project Flow
+File:
 
 ```text
-Source Code
-    |
-    v
-Tokenizer
-    |
-    v
-Parser
-    |
-    v
-Interpreter
-    |
-    v
-Output
+main.py
 ```
 
-## Important Reminder
+This file reads an AsifLang file and runs:
 
-Do not add advanced features unless the teacher asks for them. A small and clear project is easier to explain than a large and confusing project.
+```text
+Lexer -> Parser -> Interpreter
+```
+
+## How To Run
+
+```text
+python main.py examples/basic.asif
+python main.py examples/arithmetic.asif
+python main.py examples/errors.asif
+```
+
+## What Each Team Member Should Explain
+
+- What AsifLang is
+- Supported and unsupported features
+- How source code becomes tokens
+- How parser checks grammar
+- What AST means
+- How interpreter executes statements
+- How the symbol table stores variables
+- What errors are handled
+
+## Important Scope Reminder
+
+Do not add loops, if-else, functions, strings, arrays, classes, input, comments, GUI, web app, database, or advanced data types. The strength of this project is that it is small and easy to explain.

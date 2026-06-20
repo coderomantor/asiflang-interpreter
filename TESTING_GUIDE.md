@@ -1,16 +1,25 @@
 # Testing Guide
 
-This guide explains how to test AsifLang after the interpreter is implemented.
+This guide explains how to test the finished AsifLang mini interpreter.
 
-## Testing Goal
+## Required Test Commands
 
-The goal of testing is to confirm that AsifLang correctly handles valid programs and gives simple error messages for invalid programs.
+```text
+python main.py examples/basic.asif
+python main.py examples/arithmetic.asif
+python main.py examples/errors.asif
+python -m py_compile main.py tokens.py lexer.py parser.py ast_nodes.py interpreter.py
+```
 
-## Valid Program Tests
+## Test 1: Basic Program
 
-### Test 1: Valid Program
+File:
 
-Input:
+```text
+examples/basic.asif
+```
+
+Code:
 
 ```text
 x = 10
@@ -24,147 +33,85 @@ Expected output:
 15
 ```
 
-### Test 2: Valid Arithmetic
+## Test 2: Arithmetic and Parentheses
 
-Input:
+File:
+
+```text
+examples/arithmetic.asif
+```
+
+Code:
 
 ```text
 x = 2 + 3 * 4
+y = (2 + 3) * 4
 show x
+show y
 ```
 
 Expected output:
 
 ```text
 14
-```
-
-### Test 3: Valid Parentheses
-
-Input:
-
-```text
-x = (2 + 3) * 4
-show x
-```
-
-Expected output:
-
-```text
 20
 ```
 
-### Test 4: Assignment
+## Test 3: Undefined Variable Error
 
-Input:
-
-```text
-x = 10
-show x
-```
-
-Expected output:
+File:
 
 ```text
-10
+examples/errors.asif
 ```
 
-### Test 5: Division
-
-Input:
-
-```text
-x = 20 / 4
-show x
-```
-
-Expected output:
-
-```text
-5
-```
-
-## Invalid Program Tests
-
-### Test 6: Undefined Variable
-
-Input:
+Code:
 
 ```text
 show unknown
 ```
 
-Expected error:
+Expected output:
 
 ```text
-Error: Variable not defined
+Error: Variable not defined: unknown
 ```
 
-### Test 7: Invalid Syntax
+## Other Manual Error Tests
 
-Input:
+Invalid syntax:
 
 ```text
 x = 10 +
 ```
 
-Expected error:
+Missing parenthesis:
 
 ```text
-Error: Invalid syntax
+show (5 + 2
 ```
 
-### Test 8: Division by Zero
-
-Input:
+Division by zero:
 
 ```text
 x = 10 / 0
 show x
 ```
 
-Expected error:
-
-```text
-Error: Division by zero
-```
-
-### Test 9: Missing Parenthesis
-
-Input:
-
-```text
-show (5 + 2
-```
-
-Expected error:
-
-```text
-Error: Missing closing parenthesis
-```
-
-### Test 10: Unknown Character
-
-Input:
+Unknown character:
 
 ```text
 x = 10 @ 5
 ```
 
-Expected error:
+## Checklist
 
-```text
-Error: Unknown character
-```
-
-## Manual Testing Checklist
-
-- Check variable assignment
-- Check arithmetic operations
-- Check integer numbers only
-- Check parentheses
-- Check `show` output
-- Check invalid syntax
-- Check undefined variables
-- Check division by zero
-- Check unknown characters
+- Lexer creates correct tokens.
+- Parser builds an AST from valid code.
+- Parser shows clear syntax errors for invalid code.
+- Interpreter stores variables in the symbol table.
+- Interpreter evaluates arithmetic correctly.
+- `show` prints output.
+- Undefined variable error is clean.
+- Division by zero error is clean.
+- Python syntax check passes.

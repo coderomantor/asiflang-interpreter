@@ -2,60 +2,111 @@
 
 AsifLang is a small educational programming language created for a Compiler Construction mini semester project. It is named after our Compiler Construction teacher, Asif.
 
-The goal of this project is to show the basic working of a programming language interpreter in a simple and beginner-friendly way.
+The goal is to demonstrate the main parts of a language processor in a simple way: lexer, parser, AST, interpreter, symbol table, and error handling.
 
-## What AsifLang Supports
+## Supported Features
 
-AsifLang will support only these features:
+AsifLang supports only:
 
+- Integer numbers
 - Variables
-- Numbers
-- Assignment
+- Assignment using `=`
 - Arithmetic operators: `+`, `-`, `*`, `/`
-- Parentheses
-- `show` statement for output
-- Simple error messages
+- Parentheses: `(` and `)`
+- `show` statement
+- Simple beginner-friendly error messages
+
+## Unsupported Features
+
+AsifLang does not support:
+
+- Loops
+- If-else
+- Functions
+- Strings
+- Arrays
+- Classes
+- Input
+- Comments
+- Advanced data types
+- GUI, web app, or database
 
 ## Example Program
 
 ```text
 x = 10
-y = 20
-z = x + y * 2
-show z
+y = x + 5
+show y
 ```
 
 Expected output:
 
 ```text
-50
+15
 ```
+
+## How To Run
+
+Run an AsifLang file from the command line:
+
+```text
+python main.py examples/basic.asif
+```
+
+More examples:
+
+```text
+python main.py examples/arithmetic.asif
+python main.py examples/errors.asif
+```
+
+If no file path is provided, the program shows:
+
+```text
+Usage: python main.py examples/basic.asif
+```
+
+## Project Flow
+
+```text
+Source Code
+    |
+    v
+Lexer
+    |
+    v
+Parser
+    |
+    v
+AST
+    |
+    v
+Interpreter
+    |
+    v
+Output
+```
+
+## Main Files
+
+- `tokens.py`: token names and `Token` class
+- `lexer.py`: converts source code into tokens
+- `ast_nodes.py`: AST node classes
+- `parser.py`: converts tokens into an AST
+- `interpreter.py`: executes the AST
+- `main.py`: command-line runner
+- `examples/`: sample AsifLang programs
 
 ## Why This Is a Compiler Construction Project
 
-This project is related to Compiler Construction because it uses the main phases used in language processing:
+This project demonstrates:
 
-- Lexical analysis: breaking source code into tokens
-- Syntax analysis: checking whether the code follows grammar rules
-- Parsing: building a structured form of the code
-- Interpretation: executing the parsed statements
-- Error handling: showing simple messages for invalid code
+- Lexical analysis
+- Syntax analysis
+- Parsing
+- AST construction
+- Interpretation
+- Symbol table usage
+- Error handling
 
-AsifLang is not a full compiler. It is a mini interpreter, but it still demonstrates important compiler construction concepts.
-
-## Project Scope
-
-The project is intentionally small so that all team members can understand and explain it in the exam.
-
-AsifLang is designed for learning, not for real software development.
-
-## Repository Files
-
-- `README.md`: project overview
-- `PROJECT_PLAN.md`: development plan
-- `LANGUAGE_SPEC.md`: language features and rules
-- `GRAMMAR.md`: grammar of AsifLang
-- `EXAM_EXPLANATION.md`: simple explanation for viva or presentation
-- `TESTING_GUIDE.md`: testing ideas and sample programs
-- `TEAM_GUIDE.md`: guide for team members
-
+AsifLang is not a full compiler. It is a small interpreter designed for learning and exam explanation.

@@ -1,15 +1,32 @@
+import sys
+
+from interpreter import Interpreter
 from lexer import Lexer
+from parser import Parser
 
 
-# Sample AsifLang program for testing the lexer only.
-source_code = """x = 10
-y = x + 5
-show y"""
+def run_file(file_path):
+    """Run one AsifLang source file."""
+    try:
+        with open(file_path, "r") as file:
+            source_code = file.read()
 
-lexer = Lexer(source_code)
-tokens = lexer.tokenize()
+        lexer = Lexer(source_code)
+        tokens = lexer.tokenize()
 
-print("Generated tokens:")
-for token in tokens:
-    print(token)
+        parser = Parser(tokens)
+        program = parser.parse()
+
+        interpreter = Interpreter()
+        interpreter.interpret(program)
+    except FileNotFoundError:
+        print(f"Error: File not found: {file_path}")
+    except Exception as error:
+        print(f"Error: {error}")
+
+
+if len(sys.argv) != 2:
+    print("Usage: python main.py examples/basic.asif")
+else:
+    run_file(sys.argv[1])
 
