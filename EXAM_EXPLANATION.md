@@ -2,7 +2,7 @@
 
 ## Short Introduction
 
-AsifLang is a mini custom programming language created for our Compiler Construction project. It is named after our teacher, Asif. The language supports variables, numbers, assignment, arithmetic expressions, parentheses, and a `show` statement.
+AsifLang is a mini custom programming language created for our Compiler Construction project. It is named after our teacher, Asif. The language supports integer numbers, variables, assignment, arithmetic expressions, parentheses, and a `show` statement.
 
 ## Simple Definition
 
@@ -85,8 +85,8 @@ Error: Division by zero
 
 ## Features Supported
 
+- Integer numbers
 - Variables
-- Numbers
 - Assignment
 - Arithmetic operators
 - Parentheses
@@ -96,28 +96,65 @@ Error: Division by zero
 ## Features Not Supported
 
 - Loops
-- Conditions
+- If-else
 - Functions
-- Classes
 - Strings
 - Arrays
-- User input
+- Classes
+- Input
+- Comments
+- Advanced data types
 
 ## Sample Demo Program
 
 ```text
-a = 10
-b = 5
-c = (a + b) * 2
-show c
+x = 10
+y = x + 5
+show y
 ```
 
 Expected output:
 
 ```text
-30
+15
+```
+
+## More Examples
+
+Valid arithmetic:
+
+```text
+x = 2 + 3 * 4
+show x
+```
+
+Expected output:
+
+```text
+14
+```
+
+Valid parentheses:
+
+```text
+x = (2 + 3) * 4
+show x
+```
+
+Expected output:
+
+```text
+20
+```
+
+Invalid examples:
+
+```text
+show unknown
+x = 10 +
+show (5 + 2
 ```
 
 ## One-Minute Viva Answer
 
-AsifLang is a mini interpreter for a custom language. It demonstrates compiler construction concepts such as lexical analysis, syntax analysis, parsing, interpretation, and error handling. The language is small and supports variables, numbers, assignment, arithmetic operations, parentheses, and a `show` statement. We kept the language simple so that the working of each phase can be explained clearly in the exam.
+AsifLang is a mini interpreter for a custom language. It demonstrates compiler construction concepts such as lexical analysis, syntax analysis, parsing, interpretation, and error handling. The language is small and supports only integer numbers, variables, assignment, arithmetic operations, parentheses, and a `show` statement. We kept the language simple so that the working of each phase can be explained clearly in the exam.

@@ -13,7 +13,7 @@ A statement can be:
 
 Expressions can contain:
 
-- Numbers
+- Integer numbers
 - Variables
 - Arithmetic operators
 - Parentheses
@@ -23,12 +23,8 @@ Expressions can contain:
 ```text
 program        -> statement*
 
-statement      -> assignment
-                | show_statement
-
-assignment     -> IDENTIFIER "=" expression
-
-show_statement -> "show" expression
+statement      -> IDENTIFIER "=" expression
+                | "show" expression
 
 expression     -> term (("+" | "-") term)*
 
@@ -44,7 +40,7 @@ factor         -> NUMBER
 The tokenizer will identify these token types:
 
 ```text
-NUMBER       numeric value
+NUMBER       integer number
 IDENTIFIER   variable name
 SHOW         show keyword
 PLUS         +
@@ -86,21 +82,32 @@ So the result is:
 
 ## Statement Examples
 
-Assignment:
+Valid program:
 
 ```text
 x = 10
+y = x + 5
+show y
 ```
 
-Show statement:
+Valid arithmetic:
 
 ```text
+x = 2 + 3 * 4
 show x
 ```
 
-Expression:
+Valid parentheses:
 
 ```text
-(10 + 5) * 2
+x = (2 + 3) * 4
+show x
 ```
 
+Invalid examples:
+
+```text
+show unknown
+x = 10 +
+show (5 + 2
+```

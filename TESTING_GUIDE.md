@@ -8,7 +8,53 @@ The goal of testing is to confirm that AsifLang correctly handles valid programs
 
 ## Valid Program Tests
 
-### Test 1: Simple Assignment
+### Test 1: Valid Program
+
+Input:
+
+```text
+x = 10
+y = x + 5
+show y
+```
+
+Expected output:
+
+```text
+15
+```
+
+### Test 2: Valid Arithmetic
+
+Input:
+
+```text
+x = 2 + 3 * 4
+show x
+```
+
+Expected output:
+
+```text
+14
+```
+
+### Test 3: Valid Parentheses
+
+Input:
+
+```text
+x = (2 + 3) * 4
+show x
+```
+
+Expected output:
+
+```text
+20
+```
+
+### Test 4: Assignment
 
 Input:
 
@@ -21,52 +67,6 @@ Expected output:
 
 ```text
 10
-```
-
-### Test 2: Addition
-
-Input:
-
-```text
-a = 5
-b = 7
-show a + b
-```
-
-Expected output:
-
-```text
-12
-```
-
-### Test 3: Operator Precedence
-
-Input:
-
-```text
-result = 10 + 5 * 2
-show result
-```
-
-Expected output:
-
-```text
-20
-```
-
-### Test 4: Parentheses
-
-Input:
-
-```text
-result = (10 + 5) * 2
-show result
-```
-
-Expected output:
-
-```text
-30
 ```
 
 ### Test 5: Division
@@ -91,7 +91,7 @@ Expected output:
 Input:
 
 ```text
-show total
+show unknown
 ```
 
 Expected error:
@@ -105,7 +105,7 @@ Error: Variable not defined
 Input:
 
 ```text
-x = + 10
+x = 10 +
 ```
 
 Expected error:
@@ -134,8 +134,7 @@ Error: Division by zero
 Input:
 
 ```text
-x = (10 + 5
-show x
+show (5 + 2
 ```
 
 Expected error:
@@ -162,6 +161,7 @@ Error: Unknown character
 
 - Check variable assignment
 - Check arithmetic operations
+- Check integer numbers only
 - Check parentheses
 - Check `show` output
 - Check invalid syntax
